@@ -58,7 +58,8 @@ public class Exercise {//exercise code will be saved here
     		System.out.println("Invalid Value");
     	}
     	float kb = megaBytes * 1024F;
-    	System.out.println(megaBytes + " MB = " + kb + " KB");
+    	System.out.println(megaBytes + " MB = " + kb + " KB");\
+    	// lol
     }
     
 // Exercise 4 -----------------------------------------------------------------------------------------------    
