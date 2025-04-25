@@ -15,7 +15,9 @@ public class Exercise {//exercise code will be saved here
         //Exercise 3
         printKBtoMB(2048);
         printMBtoKB(2);
-
+        
+        //Exercise 4
+        shouldWakeUp(false, 0);
 	}
 //Exercise 1 -----------------------------------------------------------------------------------------------------
 	public static void checkNumber(int number){
@@ -58,9 +60,15 @@ public class Exercise {//exercise code will be saved here
     		System.out.println("Invalid Value");
     	}
     	float kb = megaBytes * 1024F;
-    	System.out.println(megaBytes + " MB = " + kb + " KB");\
-    	// lol
+    	System.out.println(megaBytes + " MB = " + kb + " KB");
+    	
     }
     
-// Exercise 4 -----------------------------------------------------------------------------------------------    
+// Exercise 4 -----------------------------------------------------------------------------------------------
+    public static boolean shouldWakeUp(boolean barking, int hourOfDay){
+        if(hourOfDay < 0 || hourOfDay > 23){
+            return false;
+        }
+        return barking && (hourOfDay < 8 || hourOfDay > 22);
+    }
 }
