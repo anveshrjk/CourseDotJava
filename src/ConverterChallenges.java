@@ -11,4 +11,7 @@ public class ConverterChallenges {
 	public static double convertToCentimeters(int feet, int inches) {//from feet'in to cm
 		return convertToCentimeters((feet * 12) + inches);
 	};
+	private static int convertToMeter(int cm) {
+		return convertToMeter(0);
+	}
 }
