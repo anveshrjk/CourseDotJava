@@ -61,7 +61,10 @@ public class Exercise {//exercise code will be saved here
     	}
     	float kb = megaBytes * 1024F;
     	System.out.println(megaBytes + " MB = " + kb + " KB");
+<<<<<<< HEAD
     	
+=======
+>>>>>>> b9db98fd7dc904b08e92c5fba6734d9d7ee1b205
     }
     
 // Exercise 4 -----------------------------------------------------------------------------------------------
