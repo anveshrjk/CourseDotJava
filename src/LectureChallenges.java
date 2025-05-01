@@ -1,5 +1,5 @@
 
-public class ConverterChallenges {
+public class LectureChallenges {
 
 	public static void main(String[] args) {
 		//to CM 
