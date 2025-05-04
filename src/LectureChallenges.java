@@ -2,7 +2,7 @@ import java.security.PublicKey;
 
 public class LectureChallenges {
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		//to CM 
 		System.out.println(convertToCentimeters(72) + " cm");
 		System.out.println(convertToCentimeters(5, 11) + " cm");
