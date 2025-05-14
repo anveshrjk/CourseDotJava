@@ -15,7 +15,7 @@ public class LectureChallenges {
         System.out.println(getDurationString(3945));
         
         //nato char
-        char nato = 'O';
+        char nato = 'A';
     	switch (nato) {
     	case 'A':
     		System.out.println("ABLE");
@@ -48,6 +48,11 @@ public class LectureChallenges {
     	System.out.println("3 is " + (isPrime(3) ? "" : " not ") + "a prime number");
     	System.out.println("4 is " + (isPrime(4) ? "" : " not ") + "a prime number");
     	System.out.println("13 is " + (isPrime(13) ? "" : " not ") + "a prime number");
+
+		//3 & 5 Div
+		sum3And5Div();
+
+
 	}
 	
 	//converts inches and feet to cm
@@ -106,4 +111,24 @@ public class LectureChallenges {
     	}
     	return true;
     }
+	public static void sum3And5Div() {
+		int sum = 0;
+		int counter = 0;
+		for (int i = 1; i <= 1000; i++) {
+			if ((i % 3 == 0) && (i % 5 == 0)) {
+				System.out.println(i);
+				counter++;
+				sum += i;
+			}
+			if(counter == 5){
+				break;
+			}
+		}
+		System.out.println("the sum of all the numbers divisible by both 3 and 5 is: " + sum);
+	}
+//	public static boolean isEvenNum(int number){
+//		return number % 2 == 0;
+//	}
+
+	
 }
