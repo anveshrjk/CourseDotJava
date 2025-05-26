@@ -1,6 +1,9 @@
+import java.io.Closeable;
+import java.util.Scanner;
+
 public class SectionSix {
 	public static void main(String[] args) {
-
+		
 		//switch-case
 		int switchValue = 2;
 		switch (switchValue) {
@@ -22,7 +25,8 @@ public class SectionSix {
 		int DOB = Integer.parseInt(userDOB);
 		System.out.println("age = " + (currentYear - DOB));
 		
-		
+		// 5 int sum
+		addNum();
 	}
 
 	public static String getQuater(String month) {
@@ -37,5 +41,25 @@ public class SectionSix {
 			}
 		};
 	}
-
-}
+	
+	//taking 5 valid integers as i/p and adding them
+	public static void addNum() {
+		Scanner scanner = new Scanner(System.in);
+		int counter = 1;
+		int sum = 0;
+		
+		while(counter <= 5) {
+			System.out.println("Enter number #" + counter);
+			String strNumber = scanner.nextLine();
+			try {
+				int num = Integer.parseInt(strNumber);
+				counter++;
+				sum += num;
+			} catch(NumberFormatException nfe) {
+				System.out.println("Invalid Number");
+			}
+		}
+		scanner.close();
+		System.out.println("The sum of 5 numbers is: " + sum);
+	}
+}//class close

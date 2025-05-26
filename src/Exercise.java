@@ -1,3 +1,7 @@
+import java.util.Iterator;
+
+import com.sun.security.auth.NTNumericCredential;
+
 public class Exercise {//exercise code will be saved here
 
 /*	
@@ -115,16 +119,230 @@ public class Exercise {//exercise code will be saved here
         //Exercise 26
         System.out.println("------------------------------------------------------------------");
         //Exercise 27
+        printDiagonalStar(8);
         System.out.println("------------------------------------------------------------------");
     }
 	
 // Exercise codes here:
-//Exercise -----------------------------------------
+    //Exercise 
+
+    //Exercise 27 Constructing A Diagonal Star Pattern With Loops 
+    public static void printDiagonalStar(int number) {
+    	
+		if(number < 5) {
+			System.out.println("Invalid Value");
+		}
+		else {
+			//int rowCount = 1;
+			for(int row = 1; row <= number; row++) {// loop for row
+				int rowCount = number;
+				for(int column = 1; column <= number; column++) {//loop for column
+					if(row == 1 || row == number) {// first or last row
+						System.out.print("* ");
+					}
+					else if(column == 1) {// remaining rows 
+						System.out.print("* ");
+					}
+					else if(column == row) {
+						System.out.print("* ");
+					}
+					else if(column == rowCount - row + 1){
+						System.out.print("* ");
+					}
+					else if(column == number) {
+						System.out.print("* ");
+					}
+					else {
+						System.out.print("  ");
+					}
+				}
+				rowCount--;
+				System.out.println("");
+			}
+		}
+	}
     
-    //Exercise 20 Evaluating The Last Digit For Multiple Integer Comparisons-------------------------
+    //Exercise 26 Identifying The Largest Prime Factor Of A Number
+    public static int getLargestPrime(int number){
+        if(number <= 0){
+            return -1;
+        }
+        int factor = -1;
+        for(int i = 2; i <= number; i++){
+            if(number % i != 0){
+                continue;
+            }
+            factor = i;
+            while(number % i == 0){
+                number /= i;
+            }
+        }
+        return number == 1? factor : number;
+    }
+    //Exercise 25 Managing Flour Pack Requirements With Limited Bucket Sizes
+    public static boolean canPack(int bigCount, int smallCount, int goal){
+        if(bigCount < 0 || smallCount < 0 || goal < 0){
+            return false;
+        }
+        else{
+            int bigBag = 5;
+            int totalBigWeight = bigBag * bigCount;
+            if(goal <= totalBigWeight){
+                int remainingWt = goal % bigBag;
+                return remainingWt <= smallCount;
+            }
+            else{
+                int currentWt = goal - totalBigWeight;
+                return currentWt <= smallCount;
+            }
+        }    
+    }
     
+    //Exercise 24 Converting Digits Into Words And Handling Edge Cases
+    public static int reverse(int number) {
+        
+        int reverse = 0;
+        while (number != 0) {
+            // multiply by 10 then and add last digit (number % 10)
+            reverse = reverse * 10 + number % 10;
+            number /= 10; // discard last digit
+        }
+        return reverse;
+    }
+ 
+    public static int getDigitCount(int number) {
+        
+        if (number < 0) {
+            return -1;
+        }
+ 
+        if (number == 0) {
+            return 1;
+        }
+ 
+        int count = 0;
+        // start from 1 and multiply by 10 each step so i goes 1, 10, 100, 1000
+        // count how many times it was multiplied, and that's the digit count
+        for (int i = 1; i <= number; i *= 10) {
+            count++;
+        }
+        return count;
+    }
+ 
+    public static void numberToWords(int number) {
+        
+        if (number < 0) {
+            System.out.println("Invalid Value");
+            return;
+        }
+ 
+        // get reversed number
+        int reverse = reverse(number);
+ 
+        // subtract numberDigits and reverseDigits to get leading zeroes
+        int leadingZeroes = getDigitCount(number) - getDigitCount(reverse);
+ 
+        if (number == 0) {
+            System.out.println("Zero");
+            return;
+        }
+ 
+        // use loop to print words
+        while (reverse != 0) {
+            int lastDigit = reverse % 10;
+            switch (lastDigit) {
+                case 0 -> System.out.println("Zero");
+                case 1 -> System.out.println("One");
+                case 2 -> System.out.println("Two");
+                case 3 -> System.out.println("Three");
+                case 4 -> System.out.println("Four");
+                case 5 -> System.out.println("Five");
+                case 6 -> System.out.println("Six");
+                case 7 -> System.out.println("Seven");
+                case 8 -> System.out.println("Eight");
+                case 9 -> System.out.println("Nine");
+            }
+            reverse /= 10;
+        }
+ 
+        // print zeroes if there are any leading zeroes in reversed number
+        for (int i = 0; i < leadingZeroes; i++) {
+            System.out.println("Zero");
+        }
+    }
     
-	//Exercise 19 Checking For A Shared Digit Between Two Numbers------------------------------------
+    //Exercise 23 Confirming Perfect Numbers Through Sum Of Proper Divisors
+    public static boolean isPerfectNumber(int number){
+        if(number < 1){
+            return false;
+        }
+        int sum = 0;
+        for(int i = 1; i <= number; i++){
+            if(number % i == 0){
+                sum += i;
+            }
+        }
+        sum -= number;
+        return sum == number;
+    }
+    
+    //Exercise 22 Deriving The Greatest Common Divisor (GCD) Efficiently
+    public static int getGreatestCommonDivisor(int first, int second){
+        if(first < 10 || second < 10){
+            return -1;
+        }
+        else{
+            int gcd = 0;
+            if(first > second){
+                for (int i = 1; i <= second; i++){
+                    if((first % i == 0) && (second % i == 0)){
+                        gcd = i;
+                    }
+                }                
+            }
+            else{
+                for (int j = 1; j <= second; j++){
+                    if((first % j == 0) && (second % j == 0)){
+                        gcd = j;
+                    }
+                }
+            }
+            return gcd;
+        }
+    }
+    
+    //Exercise 21 Listing All Factors Of A Given Number 
+    public static void printFactors(int number){
+        if(number < 1){
+            System.out.println("Invalid Value");
+        }
+        else{
+            for(int i = 1; i <= number; i++){
+                if(number % i == 0){
+                    System.out.print(i + " ");
+                }
+            }
+        }
+    }
+    
+    //Exercise 20 Evaluating The Last Digit For Multiple Integer Comparisons
+    public static boolean hasSameLastDigit(int first, int second, int third){
+        boolean condition = isValid(first) && isValid(second) && isValid(third);
+        if(condition){
+            int firstL = first % 10;
+            int secondL = second % 10;
+            int thirdL = third % 10;
+            return ((firstL == secondL) ? true : false) 
+                || ((firstL == thirdL) ? true : false) 
+                || ((secondL == thirdL) ? true : false);
+        }
+        return false;
+    }
+    public static boolean isValid(int number){
+        return (number > 9 && number < 1001);
+    }
+    
+	//Exercise 19 Checking For A Shared Digit Between Two Numbers 
     public static boolean hasSharedDigit(int first, int second){
         if((first < 10 || first > 99) || (second < 10 || second > 99)){
             return false;
@@ -143,7 +361,7 @@ public class Exercise {//exercise code will be saved here
         }    
     }
     
-	//Exercise 18 Calculating The Sum Of All Even Digits In An Integer-------------------------------
+	//Exercise 18 Calculating The Sum Of All Even Digits In An Integer 
     public static int getEvenDigitSum(int number){
         if(number < 0){
             return -1;
@@ -161,7 +379,7 @@ public class Exercise {//exercise code will be saved here
         }
     }    
     
-	//Exercise 17 Summing The First And Last Digits Of An Integer-----------------------------------
+	//Exercise 17 Summing The First And Last Digits Of An Integer
 	public static int sumFirstLast(int number){
 	    if(number < 0){
 	        return -1;
@@ -173,7 +391,7 @@ public class Exercise {//exercise code will be saved here
 	    return number + last;
 	}    
     
-	//Exercise 16 Identifying Palindromeic Numbers For Enhanced Numeric Validation ------------------
+	//Exercise 16 Identifying Palindromeic Numbers For Enhanced Numeric Validation
     public static boolean isPalindrome(int number){
         int reverse = 0;
         int original = number;
@@ -184,7 +402,7 @@ public class Exercise {//exercise code will be saved here
         return number == reverse;
     }    
     
-	//Exercise 15 ----------------------------------------------------------------------------------
+	//Exercise 15 Summing Odd Numbers In A Specified Range
     public static boolean isOdd(int number){
         
         if(number < 0){
@@ -212,7 +430,7 @@ public class Exercise {//exercise code will be saved here
         return -1;
     }    
     
-	//Exercise 14 ----------------------------------------------------------------------------------
+	//Exercise 14 Computing Month Length With Leap Year Consideration
     public static boolean isLeapAYear(int year) {
         if (year > 0 && year < 10000) {
             if (year % 4 == 0) {
@@ -247,7 +465,7 @@ public class Exercise {//exercise code will be saved here
         };
     }    
     
-	//Exercise 13 ----------------------------------------------------------------------------------
+	//Exercise 13 Determining Word Representation Of Numbers Accurately
     public static void printNumberInWord(int number) {
         
         String numberInWord;
@@ -267,7 +485,7 @@ public class Exercise {//exercise code will be saved here
         System.out.println(numberInWord);
     }    
     
-	//Exercise 12 ----------------------------------------------------------------------------------
+	//Exercise 12 Designing A 'Playing Cat' Logic Program To Refine Conditional Implementation
     public static boolean isCatPlaying(boolean summer, int temperature) {
         if (!summer) {
             return temperature >= 25 && temperature <= 35;
@@ -276,7 +494,7 @@ public class Exercise {//exercise code will be saved here
         }
     }    
     
-	//Exercise 11 ----------------------------------------------------------------------------------
+	//Exercise 11 Crafting An Equality Printer To Explore Multiple Conditional Checks In Java
     public static void printEqual(int a, int b, int c) {
         if (a < 0 || b < 0 || c < 0) {
             System.out.println("Invalid Value");
@@ -289,7 +507,7 @@ public class Exercise {//exercise code will be saved here
         }
     }    
     
-	//Exercise 10 ----------------------------------------------------------------------------------
+	//Exercise 10 Implementing A Minutes-To-Years-And-Days Calculator For Advanced Time Conversions
     public static void printYearsAndDays(long minutes) {
         if (minutes < 0) {
             System.out.println("Invalid Value");
@@ -301,7 +519,7 @@ public class Exercise {//exercise code will be saved here
         }
     }    
     
-	//Exercise 9 -------------------------------------------------------------------------------------
+	//Exercise 9 Constructing A Comprehensive Area Calculator For Circles And Rectangles In Java
     public static double area(double radius) {
         if (radius < 0.0) {
             return -1.0;
@@ -317,7 +535,7 @@ public class Exercise {//exercise code will be saved here
         return x * y;
     }    
     
-    //Exercise 8 -------------------------------------------------------------------------------------
+    //Exercise 8 Devising A Teen Number Checker For Mastery Of Conditional Range Checking
     public static boolean hasTeen(int age1, int age2, int age3) {
 
         return isTeen(age1) || isTeen(age2) || isTeen(age3);
@@ -328,13 +546,13 @@ public class Exercise {//exercise code will be saved here
         return age > 12 && age < 20;
     }    
     
-    //Exercise 7 --------------------------------------------------------------------------------------
+    //Exercise 7 Creating An Equal Sum Checker For Strengthening Arithmetic And Comparison Operations
 
     public static boolean hasEqualSum(int a, int b, int c) {
         return a + b == c;
     }    
     
-    //Exercise 6 ---------------------------------------------------------------------------------------
+    //Exercise 6 Building A Decimal Comparator To Practice Floating-Point Comparisons In Java
 
     public static boolean areEqualByThreeDecimalPlaces(double a, double b) {
 
@@ -343,8 +561,7 @@ public class Exercise {//exercise code will be saved here
         return firstRounded == secondRounded;
     }    
     
-    // Exercise 5 -------------------------------------------------------------------------------------
-
+    // Exercise 5 Implementing A Precise Leap Year Calculator To Enhance Conditional Reasoning
     public static boolean isLeapYear(int year) {
 
         if (year < 1 || year > 9999) {
@@ -363,8 +580,7 @@ public class Exercise {//exercise code will be saved here
         return false;
     }    
     
-    // Exercise 4 --------------------------------------------------------------------------------------
-
+    // Exercise 4 Developing A 'Barking Dog' Program For Boolean Logic Familiarity
     public static boolean shouldWakeUp(boolean barking, int hourOfDay) {
 
         if (hourOfDay < 0 || hourOfDay > 23) {
@@ -375,7 +591,7 @@ public class Exercise {//exercise code will be saved here
         return barking && (hourOfDay < 8 || hourOfDay > 22);
     }    
 
-    //Exercise 3 ----------------------------------------------------------------------------------------
+    //Exercise 3 Accurate MegaBytes Converter For Mastering Integer Math In Java
     public static void printKBtoMB(int kiloBytes) {
 
         if (kiloBytes < 0) {
@@ -401,7 +617,8 @@ public class Exercise {//exercise code will be saved here
         System.out.println("-----------------------------------------------------------------------------------------------------");
     }    
     
-    //Exercise 2 ---------------------------------------------------------------------------------------
+    //Exercise 2 Implementing A Speed Converter To Practice Basic Java Arithmetic And Output
+
     public static long toMPH(double KMPH) {
 
         long MPH;
@@ -423,7 +640,8 @@ public class Exercise {//exercise code will be saved here
         }
     }
     
-    //Exercise 1 ---------------------------------------------------------------------------------------
+    //Exercise 1 Comprehensive 'Positive, Negative, Or Zero' Assessment In Java
+
     public static void checkNumber(int number) {
 
         System.out.println((number > 0) ? "positive" : ((number < 0) ? "negative" : "zero"));

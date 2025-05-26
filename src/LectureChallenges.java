@@ -1,5 +1,3 @@
-import java.security.PublicKey;
-
 public class LectureChallenges {
 
 	public static void main(String[] args) {
@@ -71,7 +69,7 @@ public class LectureChallenges {
                     + "), must be a positive integer value";
         }
 
-        int minutes = seconds / 60;
+        //int minutes = seconds / 60;
         return getDurationString(seconds / 60, seconds % 60);
     }
 
@@ -94,7 +92,7 @@ public class LectureChallenges {
         return hours + "h " + remainingMinutes + "m " + seconds + "s";
     }
     
-    //interestcalci
+    //interest calci
     public static float interestCalci(float amount, float interestRate) {
     	return (amount * (interestRate / 100));
     }
