@@ -19,20 +19,44 @@ class Animal {
 
 	@Override
 	public String toString() {
-		return "Animal [type=" + type + ", size=" + size + ", weight=" + weight + "]";
+		return "Animal{" +
+				"type='" + type + '\'' +
+				", size='" + size + '\'' +
+				", weight=" + weight +
+				'}';
 	}
-	
+
 	public void move(String speed) {
 		System.out.println(type + " moves " + speed);
 	}
 	
 	public void makeNoise() {
-		System.out.println(type + " makes some king of noise");
+		System.out.println(type + " makes some kind of noise");
 	}
 }
 
 class Dog extends Animal {
+	private String earShape, tailShape;
+
 	public Dog() {
-		super();
+		super("Mutt", "big", 50);
+	}
+
+	public Dog(String type, double weight) {
+		this(type,weight, "perky", "curled");
+	}
+
+	public Dog(String type, double weight, String earShape, String tailShape) {
+		super(type, weight < 15 ? "small" : (weight < 35 ? "medium" : "large" ), weight);
+		this.earShape = earShape;
+		this.tailShape = tailShape;
+	}
+
+	@Override
+	public String toString() {
+		return "Dog{" +
+				"earShape='" + earShape + '\'' +
+				", tailShape='" + tailShape + '\'' +
+				"} " + super.toString();
 	}
 }

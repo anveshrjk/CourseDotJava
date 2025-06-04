@@ -125,7 +125,12 @@ public class Main {
 		doAnimalStuff(animal, "slow");
 		
 		Dog dog = new Dog();
-		doAnimalStuff(animal, "fast");
+		doAnimalStuff(dog, "fast");
+
+		Dog yorkie = new Dog("Yorkie", 15);
+		doAnimalStuff(yorkie, "fast");
+		Dog retriever = new Dog("labrador retriever", 50, "floppy", "swimmer");
+		doAnimalStuff(retriever, "slow");
 		
 	}// main function
 	
