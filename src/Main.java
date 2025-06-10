@@ -27,40 +27,37 @@ public class Main {
 		inteAccount.withdrawFunds(2000000);
 		inteAccount.withdrawFunds(67500);
 		System.out.println("-----------------------------------------------------------------");
-// //basic examples of objects fields getters and setters_____________________________________________
-//    	Car car = new Car();
-//    	Car car2 = new Car();
-///*    	
-// They can't be set directly. We can only use the getters. 
-// Getters are used to access private variables and setters are used to set private variables.    	
-//    	car.make = "BMW";
-//    	car.model = "X5";
-//    	car.colour = "Black";
-//    	car.doors = 4;
-//    	car.convertible = false;
-//*/
-//    	// Using setters to set private variables
-//    	car.setMake("Bugatti");
-//    	car.setModel("Veyron");
-//    	car.setColour("White");
-//    	car.setDoors(2);
-//    	car.setConvertible(true);
-//    	
-//    	car2.setMake("Bugatti");
-//    	car2.setModel("Chiron");
-//    	car2.setColour("Black");
-//    	car2.setDoors(2);
-//    	car2.setConvertible(false);
-//    	
-//    	
-//    	System.out.println("make: " + car.getMake());
-//    	System.out.println("model: " + car.getModel());
-//    	// getModel() and getMake() are used to access private variables
-//    	
-//    	car.describeCar(); 
-//    	car2.describeCar();
-//   
-// POJO class example:
+		// basic examples of objects fields getters and
+		// setters_____________________________________________
+		Car car = new Car();
+		Car car2 = new Car();
+		/*
+		 * They can't be set directly. We can only use the getters. Getters are used to
+		 * access private variables and setters are used to set private variables.
+		 * car.make = "BMW"; car.model = "X5"; car.colour = "Black"; car.doors = 4;
+		 * car.convertible = false;
+		 */
+		// Using setters to set private variables
+		car.setMake("Bugatti");
+		car.setModel("Veyron");
+		car.setColour("White");
+		car.setDoors(2);
+		car.setConvertible(true);
+
+		car2.setMake("Bugatti");
+		car2.setModel("Chiron");
+		car2.setColour("Black");
+		car2.setDoors(2);
+		car2.setConvertible(false);
+
+		System.out.println("make: " + car.getMake());
+		System.out.println("model: " + car.getModel());
+		// getModel() and getMake() are used to access private variables
+
+		car.describeCar();
+		car2.describeCar();
+
+		// POJO class example:
 		for (int i = 1; i <= 5; i++) {
 			LPAStudent student = new LPAStudent("S1000" + i, switch (i) {
 			case 1 -> " inte";
@@ -102,7 +99,7 @@ public class Main {
 			System.out.println("Distance from coordinates (0,0): " + point1.distance(0, 0));
 			System.out.println("-----------------------------------------------------------------");
 
-			//Exercise 34 Floor carpet cost
+			// Exercise 34 Floor carpet cost
 			Floor floor = new Floor(5, 4);
 			Carpet carpet = new Carpet(10);
 			Calculator calculator = new Calculator(floor, carpet);
@@ -119,11 +116,15 @@ public class Main {
 		complex1.subtract(1, 1);
 		System.out.println("After subtraction: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
 		System.out.println("-----------------------------------------------------------------");
-		
-		//inheritance
+
+		// inheritance
+		Fish goldie = new Fish("goldfish", 0.25, 2, 3);
+		doAnimalStuff(goldie, "fast");
+/*		
+ * 		dog class:
 		Animal animal = new Animal("Generic Animal", "huge", 400);
 		doAnimalStuff(animal, "slow");
-		
+
 		Dog dog = new Dog();
 		doAnimalStuff(dog, "fast");
 
@@ -132,100 +133,111 @@ public class Main {
 		Dog retriever = new Dog("labrador retriever", 50, "floppy", "swimmer");
 		doAnimalStuff(retriever, "slow");
 		
+		Dog wolf = new Dog("wolf", 40);
+		doAnimalStuff(wolf, "slow");
+*/
+		
 	}// main function
-	
-	//inheritance: animal example
+
+	// inheritance: animal example
 	public static void doAnimalStuff(Animal animal, String speed) {
 		animal.makeNoise();
 		animal.move(speed);
 		System.out.println(animal);
 		System.out.println("_ _ _ _");
 	}
+
 	
 }// main class
 
 // Exercise 35 Complex Number Operations 
 class ComplexNumber {
-    // write code here
-    private double real, imaginary;
-    
-    public ComplexNumber(double real, double imaginary) {
-        this.real = real;
-        this.imaginary = imaginary;
-    }
-    
-    public double getReal() {
-        return real;
-    }
-    
-    public double getImaginary() {
-        return imaginary;
-    }
-   
-    public void add(double real, double imaginary) {
-        this.real += real;
-        this.imaginary += imaginary;
-    }
-    
-    public void add(ComplexNumber c) {
-        add(c.real, c.imaginary);
-    }   
-    
-    public void subtract(double real, double imaginary) {
-        this.real -= real;
-        this.imaginary -= imaginary;
-    }
-    public void subtract(ComplexNumber c) {
-        subtract(c.real, c.imaginary);
-    }
+	// write code here
+	private double real, imaginary;
+
+	public ComplexNumber(double real, double imaginary) {
+		this.real = real;
+		this.imaginary = imaginary;
+	}
+
+	public double getReal() {
+		return real;
+	}
+
+	public double getImaginary() {
+		return imaginary;
+	}
+
+	public void add(double real, double imaginary) {
+		this.real += real;
+		this.imaginary += imaginary;
+	}
+
+	public void add(ComplexNumber c) {
+		add(c.real, c.imaginary);
+	}
+
+	public void subtract(double real, double imaginary) {
+		this.real -= real;
+		this.imaginary -= imaginary;
+	}
+
+	public void subtract(ComplexNumber c) {
+		subtract(c.real, c.imaginary);
+	}
 }
 
 //Exercise 34 Floor carpet cost
 class Floor {
-    // write code here
-    private double width, length;
-    
-    public Floor(double width, double length) {
-        if(width < 0){
-            width = 0;
-        }
-        this.width = width;
-        if(length < 0){
-            length = 0;
-        }
-        this.length = length;
-    }
-    public double getArea() {
-        return width * length;
-    }
-}
-class Carpet {
-    // write code here
-    private double cost;
-    
-    public Carpet(double cost) {
-        if(cost < 0) {
-            cost = 0;
-        }
-        this.cost = cost;
-    }
-    public double getCost() {
-        return cost;
-    }
-}
-class Calculator {
-    // write code here
+	// write code here
+	private double width, length;
 
-    private Floor floor;
-    private Carpet carpet;
-    
-    public Calculator(Floor floor, Carpet carpet) {
-        this.floor = floor;
-        this.carpet = carpet;
-    }
-    public double getTotalCost() {
-        return floor.getArea() * carpet.getCost();
-    }
+	public Floor(double width, double length) {
+		if (width < 0) {
+			width = 0;
+		}
+		this.width = width;
+		if (length < 0) {
+			length = 0;
+		}
+		this.length = length;
+	}
+
+	public double getArea() {
+		return width * length;
+	}
+}
+
+class Carpet {
+	// write code here
+	private double cost;
+
+	public Carpet(double cost) {
+		if (cost < 0) {
+			cost = 0;
+		}
+		this.cost = cost;
+	}
+
+	public double getCost() {
+		return cost;
+	}
+}
+
+class Calculator {
+	// write code here
+
+	private Floor floor;
+	private Carpet carpet;
+
+	public Calculator(Floor floor, Carpet carpet) {
+		this.floor = floor;
+		this.carpet = carpet;
+	}
+
+	public double getTotalCost() {
+		return floor.getArea() * carpet.getCost();
+	}
 }
 
 //Exercise 32 Wall Area Computation
@@ -329,67 +341,70 @@ class Point {
 }
 
 //student POJO class for record and override basic
+/*
 class Student {
-    // Student's unique ID
-    private String id;
-    // Student's name
-    private String name;
-    // Student's date of birth
-    private String dateOfBirth;
-    // List of classes/courses the student is enrolled in
-    private String classList;
+	// Student's unique ID
+	private String id;
+	// Student's name
+	private String name;
+	// Student's date of birth
+	private String dateOfBirth;
+	// List of classes/courses the student is enrolled in
+	private String classList;
 
-    // Constructor to create a new student with all details
-    public Student(String id, String name, String dateOfBirth, String classList) {
-        this.id = id;
-        this.name = name;
-        this.dateOfBirth = dateOfBirth;
-        this.classList = classList;
-    }
+	// Constructor to create a new student with all details
+	public Student(String id, String name, String dateOfBirth, String classList) {
+		this.id = id;
+		this.name = name;
+		this.dateOfBirth = dateOfBirth;
+		this.classList = classList;
+	}
 
-    // Returns a string with all student details
-    @Override
-    public String toString() {
-        return "Student {id =" + id + ", name =" + name + ", dateOfBirth =" + dateOfBirth + ", classList =" + classList + "}";
-    }
+	// Returns a string with all student details
+	@Override
+	public String toString() {
+		return "Student {id =" + id + ", name =" + name + ", dateOfBirth =" + dateOfBirth + ", classList =" + classList
+				+ "}";
+	}
 
-    // Get student ID
-    public String getId() {
-        return id;
-    }
+	// Get student ID
+	public String getId() {
+		return id;
+	}
 
-    // Get student name
-    public String getName() {
-        return name;
-    }
+	// Get student name
+	public String getName() {
+		return name;
+	}
 
-    // Get student date of birth
-    public String getDateOfBirth() {
-        return dateOfBirth;
-    }
+	// Get student date of birth
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
 
-    // Get class list
-    public String getClassList() {
-        return classList;
-    }
+	// Get class list
+	public String getClassList() {
+		return classList;
+	}
 
-    // Set student ID
-    public void setId(String id) {
-        this.id = id;
-    }
+	// Set student ID
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    // Set student name
-    public void setName(String name) {
-        this.name = name;
-    }
+	// Set student name
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    // Set student date of birth
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
+	// Set student date of birth
+	public void setDateOfBirth(String dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
 
-    // Set class list
-    public void setClassList(String classList) {
-        this.classList = classList;
-    }
+	// Set class list
+	public void setClassList(String classList) {
+		this.classList = classList;
+	}
 }
+*/
