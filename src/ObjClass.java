@@ -5,6 +5,9 @@ public class ObjClass extends Object {
 		Student inte = new Student("inte", 20);
 		System.out.println(inte.toString());
 		System.out.println(inte);            //prints the same as above
+		
+		ChotaStudent chota = new ChotaStudent("chota", 10, "cnte");
+		System.out.println(chota);
 	}
 }
 
@@ -15,6 +18,12 @@ class ChotaStudent extends Student {
 		super(name, age);
 		this.parentName = parentName;
 	}
+
+	@Override
+	public String toString() {
+		return parentName + "'s kid," + super.toString();
+	}
+	
 }
 
 class Student {
@@ -31,6 +40,10 @@ class Student {
 	public String toString() {
 		return name + " is " + age;
 //		return "Student [name=" + name + ", age=" + age + "]";
+	}
+
+	public String getName() {
+		return name;
 	}
 
 //	@Override

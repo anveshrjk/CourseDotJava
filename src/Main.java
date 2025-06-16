@@ -116,38 +116,8 @@ public class Main {
 		complex1.subtract(1, 1);
 		System.out.println("After subtraction: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
 		System.out.println("-----------------------------------------------------------------");
-
-		// inheritance
-		Fish goldie = new Fish("goldfish", 0.25, 2, 3);
-		doAnimalStuff(goldie, "fast");
-/*		
- * 		dog class:
-		Animal animal = new Animal("Generic Animal", "huge", 400);
-		doAnimalStuff(animal, "slow");
-
-		Dog dog = new Dog();
-		doAnimalStuff(dog, "fast");
-
-		Dog yorkie = new Dog("Yorkie", 15);
-		doAnimalStuff(yorkie, "fast");
-		Dog retriever = new Dog("labrador retriever", 50, "floppy", "swimmer");
-		doAnimalStuff(retriever, "slow");
-		
-		Dog wolf = new Dog("wolf", 40);
-		doAnimalStuff(wolf, "slow");
-*/
 		
 	}// main function
-
-	// inheritance: animal example
-	public static void doAnimalStuff(Animal animal, String speed) {
-		animal.makeNoise();
-		animal.move(speed);
-		System.out.println(animal);
-		System.out.println("_ _ _ _");
-	}
-
-	
 }// main class
 
 // Exercise 35 Complex Number Operations 
@@ -341,7 +311,7 @@ class Point {
 }
 
 //student POJO class for record and override basic
-/*
+
 class Student {
 	// Student's unique ID
 	private String id;
@@ -407,4 +377,4 @@ class Student {
 		this.classList = classList;
 	}
 }
-*/
+
