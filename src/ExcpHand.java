@@ -49,6 +49,7 @@ public class ExcpHand {
 			}
 		}while(!validDob);
 		
+		scanner.close();
 		return "So you are " + age + " year old";
 		
 	}

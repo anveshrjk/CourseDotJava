@@ -106,19 +106,128 @@ public class Main {
 			System.out.println("Total cost of carpeting: ₹" + calculator.getTotalCost());
 			System.out.println("-----------------------------------------------------------------");
 		}
-		// Exercise 35 Complex Number Operations
-		ComplexNumber complex1 = new ComplexNumber(2, 3);
-		ComplexNumber complex2 = new ComplexNumber(4, 5);
-		System.out.println("Complex Number 1: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
-		System.out.println("Complex Number 2: " + complex2.getReal() + " + " + complex2.getImaginary() + "i");
-		complex1.add(complex2);
-		System.out.println("After addition: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
-		complex1.subtract(1, 1);
-		System.out.println("After subtraction: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
-		System.out.println("-----------------------------------------------------------------");
-		
+			// Exercise 35 Complex Number Operations
+			ComplexNumber complex1 = new ComplexNumber(2, 3);
+			ComplexNumber complex2 = new ComplexNumber(4, 5);
+			System.out.println("Complex Number 1: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
+			System.out.println("Complex Number 2: " + complex2.getReal() + " + " + complex2.getImaginary() + "i");
+			complex1.add(complex2);
+			System.out.println("After addition: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
+			complex1.subtract(1, 1);
+			System.out.println("After subtraction: " + complex1.getReal() + " + " + complex1.getImaginary() + "i");
+			System.out.println("-----------------------------------------------------------------");
+			
+			// Exercise 36 Cylinder Class with Circle Inheritance
+			Circle circle = new Circle(5);
+			System.out.println("Circle Radius: " + circle.getRadius());
+			System.out.println("Circle Area: " + circle.getArea());
+			Cylinder cylinder = new Cylinder(5, 10);
+			System.out.println("Cylinder Radius: " + cylinder.getRadius());
+			System.out.println("Cylinder Height: " + cylinder.getHeight());
+			System.out.println("Cylinder Volume: " + cylinder.getVolume());
+			System.out.println("-----------------------------------------------------------------");
+
+			// Exercise 37 Cuboid Pool Area Calculation
+			Cuboid cuboid = new Cuboid(5, 4, 3);
+			System.out.println("Cuboid Width: " + cuboid.getWidth());
+			System.out.println("Cuboid Length: " + cuboid.getLength());
+			System.out.println("Cuboid Height: " + cuboid.getHeight());
+			System.out.println("Cuboid Area: " + cuboid.getArea());
+			System.out.println("Cuboid Volume: " + cuboid.getVolume());
+			System.out.println("-----------------------------------------------------------------");
+
 	}// main function
 }// main class
+
+//Exercise 37 Cuboid Pool Area Calculation
+class Rectangle {
+    // write code here
+    private double width, length;
+
+	public Rectangle(double width, double length) {
+		if (width < 0) {
+			width = 0;
+		}
+		this.width = width;
+		
+		if(length < 0) {
+		    length = 0;
+		}
+		this.length = length;
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public double getLength() {
+		return length;
+	}
+
+	public double getArea() {
+		return width * length;
+	}
+}
+class Cuboid extends Rectangle {
+	
+	private double height;
+
+	public Cuboid(double width, double length, double height) {
+		super(width, length);
+		if (height < 0) {
+			height = 0;
+		}
+		this.height = height;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public double getVolume() {
+		return  height * getArea();
+	}
+}
+// Exercise 36 Cylinder Class with Circle Inheritance
+class Circle {
+	// write code here
+	private double radius;
+
+	public Circle(double radius) {
+		if (radius < 0) {
+			radius = 0;
+		}
+		this.radius = radius;
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public double getArea() {
+		return Math.PI * radius * radius;
+	}
+}
+class Cylinder extends Circle {
+	// write code here
+	private double height;
+
+	public Cylinder(double radius, double height) {
+		super(radius);
+		if (height < 0) {
+			height = 0;
+		}
+		this.height = height;
+	}
+
+	public double getHeight() {
+		return height;
+	}
+
+	public double getVolume() {
+		return getArea() * height;
+	}
+}
 
 // Exercise 35 Complex Number Operations 
 class ComplexNumber {
