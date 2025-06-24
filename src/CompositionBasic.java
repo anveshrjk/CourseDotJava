@@ -4,7 +4,13 @@ public class CompositionBasic {
         ComputerCase theCase = new ComputerCase("Dell", "3895", "240");
         Monitor theMonitor = new Monitor("Acer", "27inch Beast", 27, "2540 x 1440");
         Motherboard theMotherboard = new Motherboard("BK-2000", "Asus", 4, 6, "v2.44");
-        
+        PersonalComputer thePC = new PersonalComputer("Dell", "3895", theCase, theMonitor, theMotherboard);
+
+        // instead of calling like this... we can call it as a whole by powerUp() method~
+        // thePC.getMonitor().drawPixelAt(10, 10, "red");
+        // thePC.getMotherboard().loadProgram("Windows OS");
+        // thePC.getComputerCase().pressPowerButton();
+        thePC.powerUp();
     }
 }
 
@@ -100,23 +106,32 @@ class PersonalComputer extends Product {
 
      private ComputerCase computerCase;
      private Monitor monitor;
-     private Motherboard motherBoard;
+     private Motherboard motherboard;
     
     public PersonalComputer(String manufacturer, String model, ComputerCase computerCase, Monitor monitor,
-            Motherboard motherBoard) {
+            Motherboard motherboard) {
         super(manufacturer, model);
         this.computerCase = computerCase;
         this.monitor = monitor;
-        this.motherBoard = motherBoard;
+        this.motherboard = motherboard;
     }
+    private void drawLogo() {
+        monitor.drawPixelAt(1200, 50, "yellow");
+    }
+    public void powerUp() {
+        computerCase.pressPowerButton();
+        drawLogo();
+    }
+
+    /* 
     public ComputerCase getComputerCase() {
         return computerCase;
     }
     public Monitor getMonitor() {
         return monitor;
     }
-    public Motherboard getMotherBoard() {
+    public Motherboard getMotherboard() {
         return motherBoard;
     }
-    
+    */
 }
