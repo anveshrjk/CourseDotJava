@@ -1,15 +1,19 @@
 public class SmartKitchenApp {
     public static void main(String[] args) {
         
+        SmartKitchen kitchen = new SmartKitchen();
 
-        SmartKitchen remote = new SmartKitchen(
-            new Refrigirator(true), 
-            new DishWasher(true), 
-            new CoffeeMaker(false)
-        );
-        remote.pourMilk();
-        remote.addWater();
-        remote.loadDishWasher();
+        // // by classic method
+        // kitchen.getDishWasher().setHasWorkToDo(true);
+        // kitchen.getIceBox().setHasWorkToDo(true);
+        // kitchen.getBrewMaster().setHasWorkToDo(true);
+
+        // kitchen.getDishWasher().doDishes();
+        // kitchen.getBrewMaster().brewCoffee();
+        // kitchen.getIceBox().orderFood();
+
+        kitchen.setKitchenState(true, true, true);
+        kitchen.doKitchenWork();
     }
 }
 
@@ -17,74 +21,104 @@ class SmartKitchen {
 
     private Refrigirator iceBox;
     private DishWasher dishWasher;
-    private CoffeeMaker coffeeMaster;
+    private CoffeeMaker brewMaster;
 
-    
-    public SmartKitchen(Refrigirator iceBox, DishWasher dishWasher, CoffeeMaker coffeeMaster) {
+    public SmartKitchen() {
+        brewMaster = new CoffeeMaker();
+        iceBox = new Refrigirator();
+        dishWasher = new DishWasher();
+    }
+
+
+    public SmartKitchen(Refrigirator iceBox, DishWasher dishWasher,
+                         CoffeeMaker coffeeMaster) {
         this.iceBox = iceBox;
         this.dishWasher = dishWasher;
-        this.coffeeMaster = coffeeMaster;
+        this.brewMaster = coffeeMaster;
     }
 
-    public void addWater() {
-        coffeeMaster.brewCoffee(true);
+    public Refrigirator getIceBox() {
+        return iceBox;
     }
 
-    public void pourMilk() {
-        iceBox.orderFood(true);
+    public DishWasher getDishWasher() {
+        return dishWasher;
     }
 
-    public void loadDishWasher() {
-        dishWasher.doDishes(true);
+    public CoffeeMaker getBrewMaster() {
+        return brewMaster;
+    }
+
+    public void setKitchenState(boolean coffeeFlag, boolean fridgeFlag, 
+                            boolean dishWasherFlag) {
+        brewMaster.setHasWorkToDo(coffeeFlag);
+        iceBox.setHasWorkToDo(fridgeFlag);
+        dishWasher.setHasWorkToDo(dishWasherFlag);
+    }
+
+    public void doKitchenWork() {
+        brewMaster.brewCoffee();
+        iceBox.orderFood();
+        dishWasher.doDishes();
     }
 }
-class Appliance {
+
+
+class Refrigirator {
+
+    private boolean hasWorkToDo;  
+    
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+        this.hasWorkToDo = hasWorkToDo;
+    }
+    
+    public void orderFood() {
+        if(hasWorkToDo) {
+            System.out.println("ordering food~");
+            hasWorkToDo = false;
+        }
+    }
+}
+
+class DishWasher {
 
     private boolean hasWorkToDo;
 
-    public Appliance(boolean hasWorkToDo) {
+    public void setHasWorkToDo(boolean hasWorkToDo) {
         this.hasWorkToDo = hasWorkToDo;
     }
 
-    // public boolean getFlag() {
-    //     return hasWorkToDo;
-    // }
-}
-
-class Refrigirator extends Appliance {
-
-    public Refrigirator(boolean hasWorkToDo) {
-        super(hasWorkToDo);
-    }
-
-    public void orderFood(boolean hasWorkToDo) {
-        if(hasWorkToDo == true) {
-            System.out.println("pouring milk~");
+    public void doDishes() {
+        if (hasWorkToDo) {
+            System.out.println("starting the dish washer...");
+            hasWorkToDo = false;
         }
     }
 }
+class CoffeeMaker {
 
-class DishWasher extends Appliance {
+    private boolean hasWorkToDo;
 
-    public DishWasher(boolean hasWorkToDo) {
-        super(hasWorkToDo);
-    }
+    public void setHasWorkToDo(boolean hasWorkToDo) {
+		this.hasWorkToDo = hasWorkToDo;
+	}
 
-    public void doDishes(boolean hasWorkToDo) {
-        if (hasWorkToDo == true) {
-            System.out.println("Starting the dish washer...");
-        }
-    }
-}
-class CoffeeMaker extends Appliance {
-
-    public CoffeeMaker(boolean hasWorkToDo) {
-        super(hasWorkToDo);
-    }
-
-    public void brewCoffee(boolean hasWorkToDo) {
-        if(hasWorkToDo == true) {
+	public void brewCoffee() {
+        if(hasWorkToDo) {
             System.out.println("brewing some coffee~");
+            hasWorkToDo = false;
         }    
     }
 }
+// class Appliance {
+
+//     private boolean hasWorkToDo;
+
+//     public Appliance(boolean hasWorkToDo) {
+//         this.hasWorkToDo = hasWorkToDo;
+//     }
+
+//     // public boolean getFlag() {
+//     //     return hasWorkToDo;
+//     // }
+// }
